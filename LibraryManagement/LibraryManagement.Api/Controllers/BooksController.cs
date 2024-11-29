@@ -35,7 +35,7 @@ public sealed class BooksController : ControllerBase
     }
 
     [HttpPut]
-    public ActionResult ReturnBook()
+    public ActionResult DropOff()
     {
         return NoContent();
     }
