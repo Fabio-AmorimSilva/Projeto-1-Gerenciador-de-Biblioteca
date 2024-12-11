@@ -7,14 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\" />
-      <Folder Include="Services\Books\" />
-      <Folder Include="Services\Users\" />
+      <ProjectReference Include="..\LibraryManagement.Domain\LibraryManagement.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LibraryManagement.Domain\LibraryManagement.Domain.csproj" />
-      <ProjectReference Include="..\LibraryManagement.Infrastructure\LibraryManagement.Infrastructure.csproj" />
+      <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Dtos\Users\" />
     </ItemGroup>
 
 </Project>

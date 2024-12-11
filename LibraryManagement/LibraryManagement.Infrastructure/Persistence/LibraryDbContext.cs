@@ -1,8 +1,6 @@
-﻿using System.Reflection;
+﻿namespace LibraryManagement.Infrastructure.Persistence;
 
-namespace LibraryManagement.Infrastructure.Persistence;
-
-public class LibraryDbContext(DbContextOptions<LibraryDbContext> options) : DbContext(options)
+public class LibraryDbContext(DbContextOptions<LibraryDbContext> options) : DbContext(options), ILibraryDbContext
 {
     public DbSet<Book> Books { get; set; }
     public DbSet<Loan> Loans { get; set; }
