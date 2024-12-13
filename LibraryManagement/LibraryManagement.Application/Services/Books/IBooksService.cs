@@ -2,10 +2,10 @@
 
 public interface IBooksService
 {
-    ResultDto<Guid> Create(CreateBookDto dto);
-    ResultDto<Guid> DropOff(Guid bookId, DateTime dropOff);
-    ResultDto<IEnumerable<GetBookResponseDto>> List();
-    ResultDto<GetBookResponseDto> Get(Guid bookId);
-    ResultDto<Guid> Delete(Guid bookId);
-    ResultDto<Guid> Loan(Guid bookId, DateTime dropOff);
+    Task<ResultDto<Guid>> Create(CreateBookDto dto);
+    Task<ResultDto> Loan(Guid userId, Guid bookId, DateTime loanDate);
+    Task<ResultDto> DropOff(Guid bookId, DateTime dropOff);
+    Task<ResultDto> Delete(Guid bookId);
+    Task<ResultDto<GetBookResponseDto>> Get(Guid bookId);
+    Task<ResultDto<IEnumerable<GetBookResponseDto>>> List();
 }

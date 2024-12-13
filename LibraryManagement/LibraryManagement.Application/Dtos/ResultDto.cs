@@ -5,6 +5,10 @@ public class ResultDto
     public string? Message { get; private set; }
     public bool IsSuccess { get; private set; }
 
+    public ResultDto()
+    {
+    }
+
     public ResultDto(
         bool isSuccess,
         string? message = ""
@@ -14,10 +18,10 @@ public class ResultDto
         IsSuccess = isSuccess;
     }
 
-    public ResultDto Success()
+    public static ResultDto Success()
         => new(isSuccess: true);
 
-    public ResultDto Error(string message)
+    public static ResultDto Error(string message)
         => new(
             message: message,
             isSuccess: false
@@ -30,22 +34,28 @@ public class ResultDto<T> : ResultDto
 
     public ResultDto(
         T? data,
-        bool isSuccess,
+        bool isSuccess = true,
         string? message = ""
     ) : base(isSuccess, message)
     {
         Data = data;
     }
 
-    public ResultDto<T> Success(T data)
+    public ResultDto(
+        bool isSuccess,
+        string? message = ""
+    ) : base(isSuccess, message)
+    {
+    }
+
+    public static ResultDto<T> Success(T data)
         => new(
             data: data,
             isSuccess: true
         );
 
-    public ResultDto<T> Error(string message, T data)
+    public new static ResultDto<T> Error(string message)
         => new(
-            data: data,
             message: message,
             isSuccess: false
         );

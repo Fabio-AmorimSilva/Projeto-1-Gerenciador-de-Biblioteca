@@ -2,19 +2,21 @@
 
 public class Book : Entity
 {
-    public string Isbn { get; private set; }
-    public string Title { get; private set; }
-    public string Author { get; private set; }
-    public string Genre { get; private set; }
+    public string Isbn { get; private set; } = null!;
+    public string Title { get; private set; } = null!;
+    public string Author { get; private set; } = null!;
+    public string Genre { get; private set; } = null!;
     public int Year { get; private set; }
 
-    protected Book(){}
-    
+    protected Book()
+    {
+    }
+
     public Book(
-        string isbn, 
-        string title, 
-        string author, 
-        string genre, 
+        string isbn,
+        string title,
+        string author,
+        string genre,
         int year
     )
     {

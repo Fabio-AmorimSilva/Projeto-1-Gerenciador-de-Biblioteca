@@ -6,5 +6,5 @@ public interface ILibraryDbContext
     public DbSet<Loan> Loans { get; set; }
     public DbSet<User> Users { get; set; }
 
-    new Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
