@@ -10,7 +10,7 @@ public sealed class BooksController : ControllerBase
         return Created();
     }
     
-    [HttpGet]
+    [HttpGet("list")]
     public ActionResult ListBooks()
     {
         return Ok();
@@ -22,19 +22,19 @@ public sealed class BooksController : ControllerBase
         return NoContent();
     }
     
-    [HttpGet]
+    [HttpGet("get")]
     public ActionResult GetBook()
     {
         return Ok();
     }
 
-    [HttpPut]
+    [HttpPut("loan")]
     public ActionResult LoanBook()
     {
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpPut("dropoff")]
     public ActionResult DropOff()
     {
         return NoContent();

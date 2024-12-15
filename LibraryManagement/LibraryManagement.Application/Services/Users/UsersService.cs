@@ -2,8 +2,25 @@
 
 public class UsersService(ILibraryDbContext context) : IUsersService
 {
-    public ResultDto<Guid> Create()
+    public async Task<ResultDto<Guid>> Create(CreateUserDto dto)
     {
-        throw new NotImplementedException();
+        var userExists = await context.Users
+            .WithSpecification(new UserAlreadyExistsSpec(
+                name: dto.Name,
+                email: dto.Email
+            )).AnyAsync();
+
+        if (userExists)
+            return ResultDto<Guid>.Error(ErrorMessages.NotFound<User>());
+
+        var user = new User(
+            name: dto.Name,
+            email: dto.Email
+        );
+
+        await context.Users.AddAsync(user);
+        await context.SaveChangesAsync();
+
+        return new ResultDto<Guid>(user.Id);
     }
 }

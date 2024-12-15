@@ -16,10 +16,12 @@ public class BookEntityTypeConfiguration : IEntityTypeConfiguration<Book>
 
         builder
             .Property(b => b.Title)
+            .HasMaxLength(Book.TitleMaxLength)
             .IsRequired();
 
         builder
             .Property(b => b.Author)
+            .HasMaxLength(Book.AuthorMaxLength)
             .IsRequired();
 
         builder

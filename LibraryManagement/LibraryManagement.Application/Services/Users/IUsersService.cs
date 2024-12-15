@@ -2,5 +2,5 @@
 
 public interface IUsersService
 {
-    ResultDto<Guid> Create();
+    Task<ResultDto<Guid>> Create(CreateUserDto dto);
 }

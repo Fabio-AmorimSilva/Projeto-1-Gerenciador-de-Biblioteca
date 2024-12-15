@@ -1,6 +1,4 @@
-﻿using LibraryManagement.Application.Messages;
-
-namespace LibraryManagement.Application.Dtos.Books;
+﻿namespace LibraryManagement.Application.Dtos.Books;
 
 public sealed record CreateBookDto(
     string Isbn,

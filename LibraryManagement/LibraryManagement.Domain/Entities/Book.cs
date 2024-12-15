@@ -2,6 +2,9 @@
 
 public class Book : Entity
 {
+    public const int TitleMaxLength = 500;
+    public const int AuthorMaxLength = 500;
+
     public string Isbn { get; private set; } = null!;
     public string Title { get; private set; } = null!;
     public string Author { get; private set; } = null!;
@@ -20,6 +23,13 @@ public class Book : Entity
         int year
     )
     {
+        Guard.IsNotWhiteSpace(isbn);
+        Guard.IsNotWhiteSpace(title);
+        Guard.IsLessThanOrEqualTo(title.Length, TitleMaxLength, nameof(title));
+        Guard.IsNotWhiteSpace(author);
+        Guard.IsLessThanOrEqualTo(author.Length, AuthorMaxLength, nameof(author));
+        Guard.IsNotDefault(year);
+
         Isbn = isbn;
         Title = title;
         Author = author;

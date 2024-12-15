@@ -30,15 +30,15 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             .AnyAsync(l => l.BookId == bookId);
 
         if (!loanExists)
-            return new ResultDto();
+            return ResultDto.Error(ErrorMessages.AlreadyExists<Loan>());
 
         var user = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is null)
-            return new ResultDto();
+            return ResultDto.Error(ErrorMessages.NotFound<User>());
 
         var book = await context.Books.FirstOrDefaultAsync(b => b.Id == bookId);
         if (book is null)
-            return new ResultDto();
+            return ResultDto.Error(ErrorMessages.NotFound<Book>());
 
         var loan = new Loan(
             user: user,
@@ -59,7 +59,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             .FirstOrDefaultAsync(l => l.BookId == bookId);
 
         if (loan is null)
-            return new ResultDto();
+            return ResultDto.Error(ErrorMessages.NotFound<Loan>());
 
         loan.DropOffBook(dropOff: dropOff);
 
@@ -73,7 +73,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
         var book = await context.Books.FirstOrDefaultAsync(b => b.Id == bookId);
 
         if (book is null)
-            return new ResultDto();
+            return ResultDto.Error(ErrorMessages.NotFound<Book>());
 
         context.Books.Remove(book);
         await context.SaveChangesAsync();
@@ -96,7 +96,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             .FirstOrDefaultAsync();
 
         if (book is null)
-            return new ResultDto<GetBookResponseDto>(null);
+            return new ResultDto<GetBookResponseDto>();
 
         return new ResultDto<GetBookResponseDto>(book);
     }

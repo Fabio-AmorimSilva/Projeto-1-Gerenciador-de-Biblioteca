@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.Api", "LibraryManagement.Api\LibraryManagement.Api.csproj", "{95351E65-2BE5-4D72-957E-EAD2D99539B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.WebApi", "LibraryManagement.WebApi\LibraryManagement.WebApi.csproj", "{95351E65-2BE5-4D72-957E-EAD2D99539B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.Application", "LibraryManagement.Application\LibraryManagement.Application.csproj", "{005779A3-8537-44EE-B0DE-0E1C36147954}"
 EndProject

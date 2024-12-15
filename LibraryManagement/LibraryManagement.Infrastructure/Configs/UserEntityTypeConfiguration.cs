@@ -9,13 +9,15 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         
         builder
             .HasKey(u => u.Id);
-
-        builder
-            .Property(u => u.Email)
-            .IsRequired();
-
+        
         builder
             .Property(u => u.Name)
+            .HasMaxLength(User.NameMaxLength)
+            .IsRequired();
+        
+        builder
+            .Property(u => u.Email)
+            .HasMaxLength(User.EmailMaxLength)
             .IsRequired();
     }
 }

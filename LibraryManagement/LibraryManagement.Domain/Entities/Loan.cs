@@ -19,6 +19,8 @@ public class Loan : Entity
         DateTime loanDate
     )
     {
+        Guard.IsNotDefault(loanDate);
+        
         User = user;
         UserId = user.Id;
         Book = book;

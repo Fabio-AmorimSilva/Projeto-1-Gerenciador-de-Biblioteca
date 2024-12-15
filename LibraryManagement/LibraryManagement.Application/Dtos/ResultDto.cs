@@ -42,7 +42,7 @@ public class ResultDto<T> : ResultDto
     }
 
     public ResultDto(
-        bool isSuccess,
+        bool isSuccess = true,
         string? message = ""
     ) : base(isSuccess, message)
     {
