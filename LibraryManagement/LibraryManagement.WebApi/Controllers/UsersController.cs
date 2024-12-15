@@ -2,11 +2,13 @@
 
 [ApiController]
 [Route("api/users")]
-public sealed class UsersController : ControllerBase
+public sealed class UsersController(IUsersService service) : ControllerBase
 {
     [HttpPost]
-    public ActionResult Post()
+    public async Task<ActionResult> Post(CreateUserDto dto)
     {
+        await service.Create(dto);
+
         return Created();
     }
 }

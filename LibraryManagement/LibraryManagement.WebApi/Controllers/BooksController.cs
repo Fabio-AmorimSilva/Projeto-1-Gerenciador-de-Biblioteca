@@ -2,41 +2,53 @@
 
 [ApiController]
 [Route("api/books")]
-public sealed class BooksController : ControllerBase
+public sealed class BooksController(IBooksService service) : ControllerBase
 {
     [HttpPost]
-    public ActionResult Post()
+    public async Task<ActionResult> Post(CreateBookDto dto)
     {
-        return Created();
+        var bookId = await service.Create(dto);
+
+        return CreatedAtAction($"{bookId}", bookId);
     }
-    
+
     [HttpGet("list")]
-    public ActionResult ListBooks()
+    public async Task<ActionResult> ListBooks()
     {
-        return Ok();
-    }
-    
-    [HttpDelete]
-    public ActionResult Delete()
-    {
-        return NoContent();
-    }
-    
-    [HttpGet("get")]
-    public ActionResult GetBook()
-    {
-        return Ok();
+        var books = await service.List();
+
+        return Ok(books);
     }
 
-    [HttpPut("loan")]
-    public ActionResult LoanBook()
+    [HttpDelete("{bookId:guid}")]
+    public async Task<ActionResult> Delete(Guid bookId)
     {
+        await service.Delete(bookId);
+
         return NoContent();
     }
 
-    [HttpPut("dropoff")]
-    public ActionResult DropOff()
+    [HttpGet("get/{bookId:guid}")]
+    public async Task<ActionResult> GetBook(Guid bookId)
     {
+        var book = await service.Get(bookId);
+
+        return Ok(book);
+    }
+
+    [HttpPut("{userId:Guid}/{bookId:guid}/loan")]
+    public async Task<ActionResult> LoanBook(Guid userId, Guid bookId, DateTime loanDate)
+    {
+        await service.Loan(userId, bookId, loanDate);
+
+        return NoContent();
+    }
+
+    [HttpPut("{bookId:guid}/dropoff")]
+    public async Task<ActionResult> DropOff(Guid bookId, DateTime dropOff)
+    {
+        await service.DropOff(bookId, dropOff);
+
         return NoContent();
     }
 }
