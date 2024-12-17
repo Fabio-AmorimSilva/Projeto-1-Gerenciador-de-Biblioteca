@@ -1,5 +1,6 @@
 ﻿// Global using directives
 
+global using System.Reflection;
 global using Ardalis.Specification.EntityFrameworkCore;
 global using FluentValidation;
 global using LibraryManagement.Application.Common;

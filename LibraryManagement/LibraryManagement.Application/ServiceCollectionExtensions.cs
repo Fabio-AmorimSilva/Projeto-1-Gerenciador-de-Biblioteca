@@ -7,6 +7,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IBooksService, BooksService>();
         services.AddScoped<IUsersService, UsersService>();
         
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        
         return services;
     }
 }

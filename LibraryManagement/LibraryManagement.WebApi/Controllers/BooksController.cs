@@ -9,7 +9,7 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     {
         var bookId = await service.Create(dto);
 
-        return CreatedAtAction($"{bookId}", bookId);
+        return Created();
     }
 
     [HttpGet("list")]

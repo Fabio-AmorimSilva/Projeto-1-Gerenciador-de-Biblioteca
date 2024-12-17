@@ -6,7 +6,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
     {
         var isValid = await new CreateBookDtoValidator().ValidateAsync(dto);
 
-        if (isValid.IsValid)
+        if (!isValid.IsValid)
             return ResultDto<Guid>.Error(isValid.Errors.First().ErrorMessage);
 
         var book = new Book(

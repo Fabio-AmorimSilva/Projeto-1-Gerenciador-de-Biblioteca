@@ -33,10 +33,8 @@ public class ResultDto<T> : ResultDto
     public T? Data { get; private set; }
 
     public ResultDto(
-        T? data,
-        bool isSuccess = true,
-        string? message = ""
-    ) : base(isSuccess, message)
+        T data
+    )
     {
         Data = data;
     }
@@ -47,12 +45,6 @@ public class ResultDto<T> : ResultDto
     ) : base(isSuccess, message)
     {
     }
-
-    public static ResultDto<T> Success(T data)
-        => new(
-            data: data,
-            isSuccess: true
-        );
 
     public new static ResultDto<T> Error(string message)
         => new(
