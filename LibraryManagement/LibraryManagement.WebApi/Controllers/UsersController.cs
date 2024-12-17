@@ -7,8 +7,11 @@ public sealed class UsersController(IUsersService service) : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post(CreateUserDto dto)
     {
-        await service.Create(dto);
+        var response = await service.Create(dto);
 
+        if (!response.IsSuccess)
+            return BadRequest(response);
+        
         return Created();
     }
 }

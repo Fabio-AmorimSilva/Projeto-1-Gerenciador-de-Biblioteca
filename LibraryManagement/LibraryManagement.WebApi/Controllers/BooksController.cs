@@ -7,8 +7,11 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post(CreateBookDto dto)
     {
-        var bookId = await service.Create(dto);
+        var response = await service.Create(dto);
 
+        if(!response.IsSuccess)
+            return BadRequest(response.Message);
+            
         return Created();
     }
 
@@ -44,7 +47,7 @@ public sealed class BooksController(IBooksService service) : ControllerBase
         return NoContent();
     }
 
-    [HttpPut("{bookId:guid}/dropoff")]
+    [HttpPut("{bookId:guid}/drop-off")]
     public async Task<ActionResult> DropOff(Guid bookId, DateTime dropOff)
     {
         await service.DropOff(bookId, dropOff);
