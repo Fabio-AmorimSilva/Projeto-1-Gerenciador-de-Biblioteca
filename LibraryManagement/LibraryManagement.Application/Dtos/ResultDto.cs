@@ -7,6 +7,7 @@ public class ResultDto
 
     public ResultDto()
     {
+        IsSuccess = true;
     }
 
     public ResultDto(
@@ -34,7 +35,7 @@ public class ResultDto<T> : ResultDto
 
     public ResultDto(
         T data
-    )
+    ): base(isSuccess: true)
     {
         Data = data;
     }

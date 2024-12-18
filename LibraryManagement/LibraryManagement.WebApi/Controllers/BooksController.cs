@@ -9,10 +9,10 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     {
         var response = await service.Create(dto);
 
-        if(!response.IsSuccess)
+        if (!response.IsSuccess)
             return BadRequest(response.Message);
-            
-        return Created();
+
+        return Ok(response.Data);
     }
 
     [HttpGet("list")]
@@ -20,13 +20,16 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     {
         var books = await service.List();
 
-        return Ok(books);
+        return Ok(books.Data);
     }
 
     [HttpDelete("{bookId:guid}")]
     public async Task<ActionResult> Delete(Guid bookId)
     {
-        await service.Delete(bookId);
+        var response = await service.Delete(bookId);
+
+        if (!response.IsSuccess)
+            return BadRequest(response.Message);
 
         return NoContent();
     }
@@ -36,13 +39,16 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     {
         var book = await service.Get(bookId);
 
-        return Ok(book);
+        return Ok(book.Data);
     }
 
     [HttpPut("{userId:Guid}/{bookId:guid}/loan")]
     public async Task<ActionResult> LoanBook(Guid userId, Guid bookId, DateTime loanDate)
     {
-        await service.Loan(userId, bookId, loanDate);
+        var response = await service.Loan(userId, bookId, loanDate);
+
+        if (!response.IsSuccess)
+            return BadRequest(response.Message);
 
         return NoContent();
     }
@@ -50,7 +56,10 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     [HttpPut("{bookId:guid}/drop-off")]
     public async Task<ActionResult> DropOff(Guid bookId, DateTime dropOff)
     {
-        await service.DropOff(bookId, dropOff);
+        var response = await service.DropOff(bookId, dropOff);
+
+        if (!response.IsSuccess)
+            return BadRequest(response.Message);
 
         return NoContent();
     }

@@ -28,8 +28,13 @@ public class Loan : Entity
         LoanDate = loanDate;
     }
 
-    public void DropOffBook(DateTime dropOff)
+    public string DropOffBook(DateTime dropOff)
     {
+        if(dropOff.Date > LoanDate.Date)
+            return $"Book drop off date is late by {dropOff.Date.Day - LoanDate.Day} day(s).";
+        
         DropOff = dropOff;
+        
+        return "Book is received in time";
     }
 }

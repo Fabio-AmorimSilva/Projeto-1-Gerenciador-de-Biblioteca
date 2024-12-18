@@ -12,6 +12,6 @@ public sealed class UsersController(IUsersService service) : ControllerBase
         if (!response.IsSuccess)
             return BadRequest(response);
         
-        return Created();
+        return Ok(response.Data);
     }
 }

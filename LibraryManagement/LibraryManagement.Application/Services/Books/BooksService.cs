@@ -29,7 +29,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             .Include(l => l.Book)
             .AnyAsync(l => l.BookId == bookId);
 
-        if (!loanExists)
+        if (loanExists)
             return ResultDto.Error(ErrorMessages.AlreadyExists<Loan>());
 
         var user = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
@@ -61,11 +61,11 @@ public class BooksService(ILibraryDbContext context) : IBooksService
         if (loan is null)
             return ResultDto.Error(ErrorMessages.NotFound<Loan>());
 
-        loan.DropOffBook(dropOff: dropOff);
-
+        var response = loan.DropOffBook(dropOff: dropOff);
+        
         await context.SaveChangesAsync();
-
-        return new ResultDto<Guid>(loan.Id);
+        
+        return new ResultDto<string>(response);
     }
 
     public async Task<ResultDto> Delete(Guid bookId)

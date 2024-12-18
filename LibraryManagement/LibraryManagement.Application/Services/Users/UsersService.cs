@@ -16,7 +16,7 @@ public class UsersService(ILibraryDbContext context) : IUsersService
             )).AnyAsync();
 
         if (userExists)
-            return ResultDto<Guid>.Error(ErrorMessages.NotFound<User>());
+            return ResultDto<Guid>.Error(ErrorMessages.AlreadyExists<User>());
 
         var user = new User(
             name: dto.Name,
