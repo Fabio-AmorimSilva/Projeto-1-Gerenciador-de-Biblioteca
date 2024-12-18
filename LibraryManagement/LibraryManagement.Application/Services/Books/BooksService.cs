@@ -65,7 +65,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
         
         await context.SaveChangesAsync();
         
-        return new ResultDto<string>(response);
+        return ResultDto.Success(message: response);
     }
 
     public async Task<ResultDto> Delete(Guid bookId)

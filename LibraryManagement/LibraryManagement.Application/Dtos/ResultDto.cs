@@ -19,8 +19,11 @@ public class ResultDto
         IsSuccess = isSuccess;
     }
 
-    public static ResultDto Success()
-        => new(isSuccess: true);
+    public static ResultDto Success(string message = "")
+        => new(
+            isSuccess: true, 
+            message: message
+        );
 
     public static ResultDto Error(string message)
         => new(

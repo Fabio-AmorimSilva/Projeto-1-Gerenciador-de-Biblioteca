@@ -61,6 +61,6 @@ public sealed class BooksController(IBooksService service) : ControllerBase
         if (!response.IsSuccess)
             return BadRequest(response.Message);
 
-        return NoContent();
+        return Ok(response.Message);
     }
 }
