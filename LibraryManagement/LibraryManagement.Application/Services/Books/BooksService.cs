@@ -62,9 +62,9 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             return ResultDto.Error(ErrorMessages.NotFound<Loan>());
 
         var response = loan.DropOffBook(dropOff: dropOff);
-        
+
         await context.SaveChangesAsync();
-        
+
         return ResultDto.Success(message: response);
     }
 
@@ -96,7 +96,7 @@ public class BooksService(ILibraryDbContext context) : IBooksService
             .FirstOrDefaultAsync();
 
         if (book is null)
-            return new ResultDto<GetBookResponseDto>();
+            return ResultDto<GetBookResponseDto>.Error(ErrorMessages.NotFound<Book>());
 
         return new ResultDto<GetBookResponseDto>(book);
     }

@@ -3,14 +3,14 @@
 public static class ErrorMessages
 {
     public static string CannotBeEmpty(string field)
-        => $"{field} cannot be empty";
+        => $"{field} cannot be empty.";
     
     public static string HasMaxLength(string field, int length)
-        => $"{field} has max length of {length}";
+        => $"{field} has max length of {length}.";
     
     public static string NotFound<T>()
-        => $"{typeof(T)} not found";
+        => $"{typeof(T).Name} not found.";
     
     public static string AlreadyExists<T>()
-        => $"{typeof(T)}  already exists";
+        => $"{typeof(T).Name}  already exists.";
 }

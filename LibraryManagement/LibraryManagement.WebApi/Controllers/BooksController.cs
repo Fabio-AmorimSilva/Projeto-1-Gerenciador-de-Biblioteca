@@ -37,9 +37,12 @@ public sealed class BooksController(IBooksService service) : ControllerBase
     [HttpGet("get/{bookId:guid}")]
     public async Task<ActionResult> GetBook(Guid bookId)
     {
-        var book = await service.Get(bookId);
+        var response = await service.Get(bookId);
 
-        return Ok(book.Data);
+        if (!response.IsSuccess)
+            return BadRequest(response.Message);
+        
+        return Ok(response.Data);
     }
 
     [HttpPut("{userId:Guid}/{bookId:guid}/loan")]

@@ -18,11 +18,15 @@ public class CreateBookDtoValidator : AbstractValidator<CreateBookDto>
         
         RuleFor(dto => dto.Author)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookDto.Author)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookDto.Author)))
+            .MaximumLength(Book.AuthorMaxLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateBookDto.Author), Book.AuthorMaxLength));
         
         RuleFor(dto => dto.Title)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookDto.Title)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookDto.Title)))
+            .MaximumLength(Book.TitleMaxLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateBookDto.Title), Book.TitleMaxLength));
         
         RuleFor(dto => dto.Genre)
             .NotEmpty()
