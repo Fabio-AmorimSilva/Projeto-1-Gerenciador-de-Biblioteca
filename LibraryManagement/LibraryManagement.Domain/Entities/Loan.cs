@@ -31,6 +31,7 @@ public class Loan : Entity
     public string DropOffBook(DateTime dropOff)
     {
         DropOff = dropOff;
-        return dropOff.Date > LoanDate.Date ? $"Book drop off date is late by {dropOff.Date.Day - LoanDate.Day} day(s)." : "Book is received in time";
+        
+        return dropOff.Date > LoanDate.Date ? $"Book drop off date is late by {dropOff.Date.Day - LoanDate.Day} day(s)." : "Book is received in time.";
     }
 }

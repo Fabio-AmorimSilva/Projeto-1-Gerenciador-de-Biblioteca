@@ -11,9 +11,10 @@ public class UsersService(ILibraryDbContext context) : IUsersService
 
         var userExists = await context.Users
             .WithSpecification(new UserAlreadyExistsSpec(
-                name: dto.Name,
-                email: dto.Email
-            )).AnyAsync();
+                    name: dto.Name,
+                    email: dto.Email
+                )
+            ).AnyAsync();
 
         if (userExists)
             return ResultDto<Guid>.Error(ErrorMessages.AlreadyExists<User>());

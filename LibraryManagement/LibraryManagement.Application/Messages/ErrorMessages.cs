@@ -9,8 +9,8 @@ public static class ErrorMessages
         => $"{field} has max length of {length}";
     
     public static string NotFound<T>()
-        => $"{nameof(T)} not found";
+        => $"{typeof(T)} not found";
     
     public static string AlreadyExists<T>()
-        => $"{nameof(T)}  already exists";
+        => $"{typeof(T)}  already exists";
 }

@@ -2,7 +2,7 @@
 
 public class ResultDto
 {
-    public string? Message { get; private set; }
+    public string Message { get; private set; } = null!;
     public bool IsSuccess { get; private set; }
 
     public ResultDto()
@@ -10,9 +10,9 @@ public class ResultDto
         IsSuccess = true;
     }
 
-    public ResultDto(
+    protected ResultDto(
         bool isSuccess,
-        string? message = ""
+        string message = ""
     )
     {
         Message = message;
@@ -21,7 +21,7 @@ public class ResultDto
 
     public static ResultDto Success(string message = "")
         => new(
-            isSuccess: true, 
+            isSuccess: true,
             message: message
         );
 
@@ -38,14 +38,14 @@ public class ResultDto<T> : ResultDto
 
     public ResultDto(
         T data
-    ): base(isSuccess: true)
+    ) : base(isSuccess: true)
     {
         Data = data;
     }
 
     public ResultDto(
         bool isSuccess = true,
-        string? message = ""
+        string message = ""
     ) : base(isSuccess, message)
     {
     }
