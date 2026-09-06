@@ -1,0 +1,44 @@
+.available-books{
+  display: relative;
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.book-card{
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+  justify-items: left;
+  margin: 20px;
+  padding: 15px;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 3%;
+}
+
+.book-card-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book-info{
+  font-size: 14px;
+  color: #666666;
+  margin: 5px;
+}
+
+.book-card-button{
+  position: relative;
+  font-size: 14px;
+  padding: 8px 16px;
+  background-color: #000000;
+  color: #ffffff;
+  margin-left: 150px;
+  width: auto;
+}

@@ -1,0 +1,10 @@
+<h1 class="available-books">Available Books</h1>
+@for(book of books(); track book.id) {
+  <div class="book-card">
+    <h2 class="book-card-title">{{ book.title }}</h2>
+    <p class="book-info">{{ book.author }}</p>
+    <p class="book-info">{{ book.genre }}</p>
+    <p class="book-info">{{ book.year }}</p>
+    <button class="book-card-button">View Details</button>
+  </div>
+}
