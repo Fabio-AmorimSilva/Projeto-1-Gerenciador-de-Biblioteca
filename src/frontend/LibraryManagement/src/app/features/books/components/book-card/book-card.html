@@ -1,3 +1,4 @@
+<app-category-filter (genreSelected)="onGenreSelected($event)" />
 <h1 class="available-books">Available Books</h1>
 @for(book of books(); track book.id) {
   <div class="book-card">
@@ -5,6 +6,6 @@
     <p class="book-info">{{ book.author }}</p>
     <p class="book-info">{{ book.genre }}</p>
     <p class="book-info">{{ book.year }}</p>
-    <button class="book-card-button">View Details</button>
+    <button [routerLink]="['/book-details', book.id]" class="book-card-button">View Details</button>
   </div>
 }

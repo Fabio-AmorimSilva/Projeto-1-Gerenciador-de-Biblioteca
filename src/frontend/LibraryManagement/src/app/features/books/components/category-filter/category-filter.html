@@ -1,0 +1,12 @@
+<section class="category-filter">
+  <h2 class="category-filter-title">Buscar por Categoria</h2>
+  <div class="category-filter-grid">
+    @for (genre of genres(); track genre) {
+      <app-book-genre-card
+        [genre]="genre"
+        [selected]="selectedGenre() === genre"
+        (genreClick)="onGenreClick($event)"
+      />
+    }
+  </div>
+</section>

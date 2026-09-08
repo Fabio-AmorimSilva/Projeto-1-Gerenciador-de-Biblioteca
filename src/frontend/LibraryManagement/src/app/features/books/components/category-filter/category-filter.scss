@@ -1,0 +1,28 @@
+.category-filter{
+  margin: 20px;
+}
+
+.category-filter-title{
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.category-filter-title::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 4px;
+  background-color: #2f6fed;
+  border-radius: 2px;
+}
+
+.category-filter-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
