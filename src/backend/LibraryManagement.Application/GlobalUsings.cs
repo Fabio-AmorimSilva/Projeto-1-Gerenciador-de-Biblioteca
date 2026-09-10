@@ -2,6 +2,7 @@
 global using Ardalis.Specification.EntityFrameworkCore;
 global using FluentValidation;
 global using LibraryManagement.Application.Common;
+global using LibraryManagement.Application.Common.Responses;
 global using LibraryManagement.Application.Dtos;
 global using LibraryManagement.Application.Dtos.Books;
 global using LibraryManagement.Application.Dtos.Users;
