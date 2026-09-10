@@ -2,7 +2,8 @@
 
 public sealed record CreateUserDto(
     string Name,
-    string Email
+    string Email,
+    string Password
 );
 
 public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
@@ -16,5 +17,9 @@ public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
         RuleFor(dto => dto.Email)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserDto.Email)));
+        
+        RuleFor(dto => dto.Password)
+            .NotEmpty()
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateUserDto.Password)));
     }
 }

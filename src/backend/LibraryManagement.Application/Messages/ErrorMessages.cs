@@ -13,4 +13,7 @@ public static class ErrorMessages
     
     public static string AlreadyExists<T>()
         => $"{typeof(T).Name}  already exists.";
+    
+    public static string EmailIsNotValid(string email)
+        => $"{email} is not a valid email.";
 }
